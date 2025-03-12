@@ -15,7 +15,7 @@ public class main {
        
         System.out.println("Twój wiek w sekundach: " + ageSeconds);
 
-        // Zamykamy skaner
+        
         scanner.close();
     }
 }
