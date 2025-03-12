@@ -1,0 +1,14 @@
+package pl.pp;
+import  java.util.Scanner;
+
+public class mojaDrugaAplikacja{
+    public static void main (String[] args ){
+        Scanner scanner = new Scanner(System.in);
+        System.out.println("proszę podaj swoje imie:");
+        String forename = scanner.nextLine();
+        System.out.println("Prosze podaj swoje nazwisko:");
+        String surname = scanner.nextLine();
+        scanner.close();
+        System.out.println("Witaj " + forename +"" +surname);
+    }
+}
