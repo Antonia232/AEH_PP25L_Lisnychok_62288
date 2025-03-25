@@ -1,0 +1,63 @@
+package pl.pp;
+
+import java.util.Scanner;
+
+public class Moja  {
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+
+        System.out.println("Podaj pierwszą liczbę: ");
+        double liczba1 = scanner.nextDouble();
+
+        System.out.println("Podaj drugą liczbę: ");
+        double liczba2 = scanner.nextDouble();
+
+        System.out.println("Suma liczb: " + (liczba1 + liczba2));
+
+        // Pętla while - wpisywanie liczb większych od 200
+        double number;
+        do {
+            System.out.println("Podaj liczbę większą od 200: ");
+            number = scanner.nextDouble();
+        } while (number < 200);
+
+        System.out.println("Wpisałeś liczbę: " + number);
+
+        // Proste działanie matematyczne
+        System.out.println("Podaj pierwszą liczbę do mnożenia: ");
+        double a = scanner.nextDouble();
+
+        System.out.println("Podaj drugą liczbę do mnożenia: ");
+        double b = scanner.nextDouble();
+
+        double wynik = a * b;
+        System.out.println(a + " * " + b + " = " + wynik);
+
+        // Warunek if - porównanie dwóch liczb
+        System.out.println("Podaj wartość X: ");
+        double x = scanner.nextDouble();
+
+        System.out.println("Podaj wartość Y: ");
+        double y = scanner.nextDouble();
+
+        if (x > y) {
+            System.out.println("X jest większe od Y.");
+        } else if (x < y) {
+            System.out.println("X jest mniejsze od Y.");
+        } else {
+            System.out.println("X i Y są równe.");
+        }
+
+        // Zakończenie programu na podstawie wprowadzonej wartości
+        while (true) {
+            System.out.println("Wpisz 0, aby zakończyć program: ");
+            int input = scanner.nextInt();
+            if (input == 0) {
+                System.out.println("Koniec.");
+                break;
+            }
+        }
+
+        scanner.close();
+    }
+}
