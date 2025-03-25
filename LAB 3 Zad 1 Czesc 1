@@ -1,0 +1,25 @@
+import java.util.Scanner;
+
+public class Moja  {
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+
+       
+        while (true) {
+            System.out.print("Podaj liczbę dni (lub wartość ujemną, aby zakończyć): ");
+            int days = scanner.nextInt();
+
+            if (days < 0) {
+                break;
+            }
+
+            int weeks = days / 7;
+            int remainingDays = days % 7;
+
+            System.out.println(days + " dni to " + weeks + " tygodnie i " + remainingDays + " dni.");
+        }
+
+        scanner.close();
+        System.out.println("Program zakończony.");
+    }
+}
