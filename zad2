@@ -1,0 +1,91 @@
+import java.util.InputMismatchException;
+import java.util.Scanner;
+
+public class Main{
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+        boolean running = true;
+
+        while (running) {
+            displayMenu();
+            int choice = getChoice(scanner);
+
+            if (choice == 5) {
+                running = false;
+                System.out.println("Koniec programu.");
+                continue;
+            }
+
+            double num1 = getNumber(scanner, "Podaj pierwszą liczbę: ");
+            double num2 = getNumber(scanner, "Podaj drugą liczbę: ");
+            double result = 0;
+            boolean operationValid = true;
+
+            switch (choice) {
+                case 1:
+                    result = num1 + num2;
+                    break;
+                case 2:
+                    result = num1 - num2;
+                    break;
+                case 3:
+                    result = num1 * num2;
+                    break;
+                case 4:
+                    if (num2 != 0) {
+                        result = num1 / num2;
+                    } else {
+                        System.out.println("Nie można dzielić przez zero!");
+                        operationValid = false;
+                    }
+                    break;
+                default:
+                    System.out.println("Nieprawidłowy wybór. Spróbuj ponownie.");
+                    operationValid = false;
+            }
+
+            if (operationValid) {
+                System.out.println("Wynik: " + result);
+            }
+        }
+        scanner.close();
+    }
+
+    private static void displayMenu() {
+        System.out.println("\nMenu kalkulatora:");
+        System.out.println("1. Dodawanie");
+        System.out.println("2. Odejmowanie");
+        System.out.println("3. Mnożenie");
+        System.out.println("4. Dzielenie");
+        System.out.println("5. Wyjście");
+        System.out.print("Wybierz opcję (1-5): ");
+    }
+
+    private static int getChoice(Scanner scanner) {
+        while (true) {
+            try {
+                int choice = scanner.nextInt();
+                if (choice >= 1 && choice <= 5) {
+                    return choice;
+                } else {
+                    System.out.print("Nieprawidłowy wybór. Wybierz opcję 1-5: ");
+                }
+            } catch (InputMismatchException e) {
+                System.out.print("To nie jest liczba. Spróbuj ponownie: ");
+                scanner.next(); // czyść błędne dane wejściowe
+            }
+        }
+    }
+
+    private static double getNumber(Scanner scanner, String prompt) {
+        while (true) {
+            System.out.print(prompt);
+            try {
+                return scanner.nextDouble();
+            } catch (InputMismatchException e) {
+                System.out.print("To nie jest liczba. Spróbuj ponownie: ");
+                scanner.next(); // czyść błędne dane wejściowe
+            }
+        }
+    }
+}
