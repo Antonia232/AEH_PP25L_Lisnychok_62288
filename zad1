@@ -1,0 +1,27 @@
+import java.util.Scanner;
+
+public class SumOfSquaresCalculator {
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+        
+        while (true) {
+            System.out.print("Podaj dolny i górny limit liczbowy: ");
+            int lower = scanner.nextInt();
+            int upper = scanner.nextInt();
+            
+            if (upper <= lower) {
+                System.out.println("Koniec");
+                break;
+            }
+            
+            int suma = 0;
+            for (int i = lower; i <= upper; i++) {
+                suma += i * i;
+            }
+            
+            System.out.println("Suma kwadratów liczb od " + (lower * lower) + " do " + (upper * upper) + " wynosi " + suma);
+        }
+        
+        scanner.close();
+    }
+}
