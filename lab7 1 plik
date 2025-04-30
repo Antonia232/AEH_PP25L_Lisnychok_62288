@@ -1,0 +1,36 @@
+package pl.pp;
+import pl.pp.Person;
+
+public class MojaSiodmaAplikacja {
+    public static void main(String[] args) {
+        Person person1 = new Person();
+        person1.hiToAll();
+
+        person1.setName("Mateusz");
+        person1.setSurname("Karmazyn");
+        person1.age = 24;
+        person1.address = "Warszawa";
+        person1.birthYear = 1999;
+        person1.hiToAll();
+
+        Person person2 = new Person("Dariusz", "Walendziak", 42, "Kraków", 1981);
+        person2.hiToAll();
+
+        person1.growOld(1); // Zwiększamy wiek o 1
+        for (int i = 0; i < 3; i++) {
+            person2.growOld(1); // Zwiększamy wiek o 1 dla person2, trzy razy
+        }
+
+    
+        person1.beYounger(); // Zmniejszamy wiek o 1
+        person2.beYounger(); // Zmniejszamy wiek o 1
+
+        person1.hiToAll();
+        person2.hiToAll();
+
+        System.out.println(person1.getName());
+        person1.setName("Lolo");
+        System.out.println(person1.getName());
+        person1.hiToAll();
+    }
+}
