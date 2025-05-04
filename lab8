@@ -1,0 +1,63 @@
+public class Konto {
+    private String numerKonta;
+    private double dostepneSrodki;
+    private String nazwaWlasciciela;
+    private String emailWlasciciela;
+    private String numerTelefonuWlasciciela;
+    public Konto(String numerKonta, double dostepneSrodki, String nazwaWlasciciela, String emailWlasciciela, String numerTelefonuWlasciciela) {
+        this.numerKonta = numerKonta;
+        this.dostepneSrodki = dostepneSrodki;
+        this.nazwaWlasciciela = nazwaWlasciciela;
+        this.emailWlasciciela = emailWlasciciela;
+        this.numerTelefonuWlasciciela = numerTelefonuWlasciciela;
+    }
+    public String getNumerKonta() {
+        return numerKonta;
+    }
+    public double getDostepneSrodki() {
+        return dostepneSrodki;
+    }
+    public String getNazwaWlasciciela() {
+        return nazwaWlasciciela;
+    }
+    public String getEmailWlasciciela() {
+        return emailWlasciciela;
+    }
+    public String getNumerTelefonuWlasciciela() {
+        return numerTelefonuWlasciciela;
+    }
+    public void setNumerKonta(String numerKonta) {
+        this.numerKonta = numerKonta;
+    }
+    public void setDostepneSrodki(double dostepneSrodki) {
+        this.dostepneSrodki = dostepneSrodki;
+    }
+    public void setNazwaWlasciciela(String nazwaWlasciciela) {
+        this.nazwaWlasciciela = nazwaWlasciciela;
+    }
+    public void setEmailWlasciciela(String emailWlasciciela) {
+        this.emailWlasciciela = emailWlasciciela;
+    }
+    public void setNumerTelefonuWlasciciela(String numerTelefonuWlasciciela) {
+        this.numerTelefonuWlasciciela = numerTelefonuWlasciciela;
+    }
+    public void zasilKonto(double kwota) {
+        dostepneSrodki += kwota;
+        System.out.println("Wpłata PLN " + kwota + " została wykonana. Nowe saldo = PLN " + dostepneSrodki);
+    }
+    public void wyplacZKonta(double kwota) {
+        if (kwota <= dostepneSrodki) {
+            dostepneSrodki -= kwota;
+            System.out.println("Pobrano PLN " + kwota + " z konta, Pozostałe saldo = PLN " + dostepneSrodki);
+        } else {
+            System.out.println("Brak środków. Masz PLN " + dostepneSrodki + " na koncie.");
+        }
+    }
+    public static void main(String[] args) {
+        Konto mojeKonto = new Konto("1234567890", 10000, "Jan Kowalski", "jan.kowalski@example.com", "123-456-789");
+        mojeKonto.wyplacZKonta(900.0);
+        mojeKonto.zasilKonto(250.0);
+        mojeKonto.wyplacZKonta(50.0);
+        mojeKonto.wyplacZKonta(300.0);
+    }
+}
