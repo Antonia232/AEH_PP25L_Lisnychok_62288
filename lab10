@@ -1,0 +1,38 @@
+package pl.pp;
+
+public class Main {
+    public static void main(String[] args) {
+        int[] input = {-3, 2, 3, 4, 5, -3, -2, -1};
+        int[] result = countAndSumElements(input);
+
+
+        if (result.length == 0) {
+            System.out.println("Empty array");
+        } else {
+            System.out.println("Count of negative numbers: " + result[0]);
+            System.out.println("Sum of positive numbers: " + result[1]);
+        }
+    }
+
+    public static int[] countAndSumElements(int[] input) {
+
+        if (input == null || input.length == 0) {
+            return new int[0];
+        }
+
+        int countNegative = 0;
+        int sumPositive = 0;
+
+
+        for (int num : input) {
+            if (num < 0) {
+                countNegative++;
+            } else if (num > 0) {
+                sumPositive += num;
+            }
+        }
+
+
+        return new int[]{countNegative, sumPositive};
+    }
+}
