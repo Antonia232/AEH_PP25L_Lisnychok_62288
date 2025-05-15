@@ -1,0 +1,105 @@
+package pl.pp;
+public class Magazyn {
+    private int numerMagazynu;
+    private String nazwaWlasciwa;
+    private String email;
+    private String numerTelefonu;
+    private int dostepnaPrzestrzen;
+    private int maxPrzestrzen;
+
+
+    public Magazyn(int numerMagazynu, String nazwaWlasciwa, String email, String numerTelefonu, int maxPrzestrzen) {
+        this.numerMagazynu = numerMagazynu;
+        this.nazwaWlasciwa = nazwaWlasciwa;
+        this.email = email;
+        this.numerTelefonu = numerTelefonu;
+        this.maxPrzestrzen = maxPrzestrzen;
+        this.dostepnaPrzestrzen = maxPrzestrzen;
+    }
+
+
+    public void dodajTowar(int ilosc) {
+        if (ilosc <= dostepnaPrzestrzen) {
+            dostepnaPrzestrzen -= ilosc;
+            System.out.println("Dodano " + ilosc + " jednostek towaru. Pozostała przestrzeń magazynowa: " + dostepnaPrzestrzen + " jednostek.");
+        } else {
+            System.out.println("Nie ma wystarczającej przestrzeni w magazynie.");
+        }
+    }
+
+
+    public void usunTowar(int ilosc) {
+        if (ilosc <= (maxPrzestrzen - dostepnaPrzestrzen)) {
+            dostepnaPrzestrzen += ilosc;
+            System.out.println("Usunięto " + ilosc + " jednostek towaru. Pozostała przestrzeń magazynowa: " + dostepnaPrzestrzen + " jednostek.");
+        } else {
+            System.out.println("Nie można usunąć większej ilości towaru niż dostępna.");
+        }
+    }
+
+
+    public void sprawdzZajetosc() {
+        System.out.println("Zajęta przestrzeń magazynowa: " + (maxPrzestrzen - dostepnaPrzestrzen) + " jednostek.");
+        System.out.println("Dostępna przestrzeń magazynowa: " + dostepnaPrzestrzen + " jednostek.");
+    }
+
+
+    public void aktualizujKontakt(String email, String numerTelefonu) {
+        this.email = email;
+        this.numerTelefonu = numerTelefonu;
+        System.out.println("Zaktualizowano dane kontaktowe właściciela.");
+    }
+
+
+    public int getNumerMagazynu() {
+        return numerMagazynu;
+    }
+
+    public void setNumerMagazynu(int numerMagazynu) {
+        this.numerMagazynu = numerMagazynu;
+    }
+
+    public String getNazwaWlasciwa() {
+        return nazwaWlasciwa;
+    }
+
+    public void setNazwaWlasciwa(String nazwaWlasciwa) {
+        this.nazwaWlasciwa = nazwaWlasciwa;
+    }
+
+    public String getEmail() {
+        return email;
+    }
+
+    public void setEmail(String email) {
+        this.email = email;
+    }
+
+    public String getNumerTelefonu() {
+        return numerTelefonu;
+    }
+
+    public void setNumerTelefonu(String numerTelefonu) {
+        this.numerTelefonu = numerTelefonu;
+    }
+
+    public int getDostepnaPrzestrzen() {
+        return dostepnaPrzestrzen;
+    }
+
+    public void setDostepnaPrzestrzen(int dostepnaPrzestrzen) {
+        this.dostepnaPrzestrzen = dostepnaPrzestrzen;
+    }
+
+    public static void main(String[] args) {
+        Magazyn magazyn = new Magazyn(1, "Magazyn A", "owner@magazyn.pl", "123 456 789", 5000);
+
+        magazyn.dodajTowar(3600);
+        magazyn.sprawdzZajetosc();
+        magazyn.usunTowar(1488);
+        magazyn.sprawdzZajetosc();
+        magazyn.dodajTowar(100);
+        magazyn.sprawdzZajetosc();
+        magazyn.aktualizujKontakt("newowner@magazyn.pl", "+48 737 666 234");
+    }
+}
